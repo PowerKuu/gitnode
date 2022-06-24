@@ -175,7 +175,7 @@ function CreateTypescript(entry){
     .replaceAll("{EntryPath}", EntryPath))
 
 
-    execSync("npm install npx typescript @types/node ts-node nodemon lodash") 
+    execSync("npm install typescript @types/node ts-node nodemon lodash") 
 
     writeFileSync("./.gitignore", GitIngnore.trim())
 
