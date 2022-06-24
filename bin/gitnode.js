@@ -11,7 +11,7 @@ const TypescriptPackageJson = `
     "main":"{entry}.ts",
     "dependencies":{},
     "devDependencies":{},
-    "scripts":{"dev": "nodemon --ext ts,js,json,env --watch *  --exec npm run start", "start": "npx ts-node {EntryPath}"},
+    "scripts":{"dev": "nodemon --ext ts,js,json,env --watch src/*  --exec npm run start", "start": "npx ts-node {EntryPath}"},
     "author":"",
     "license":"ISC"
 }
