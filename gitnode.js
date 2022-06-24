@@ -159,6 +159,8 @@ dist
 function CreateTypescript(entry){
     const EntryPath = `./src/${entry}.ts`
 
+    console.log(`Creating typescript project!`)
+
     if (existsSync(EntryPath)) {
         console.log(`Echo ${EntryPath} already exist!`)
         return
@@ -169,7 +171,7 @@ function CreateTypescript(entry){
     writeFileSync("./package.json", TypescriptPackageJson.trim()
     .replaceAll("{entry}", entry)
     .replaceAll("{EntryPath}", EntryPath))
-
+    
 
     execSync("npm install npx typescript @types/node ts-node nodemon lodash") 
 
@@ -179,6 +181,8 @@ function CreateTypescript(entry){
 
     execSync("git init")
     execSync("code ./src/")
+
+    console.log(`Created typescript project! Entry: (${EntryPath})`)
 }
 
 
