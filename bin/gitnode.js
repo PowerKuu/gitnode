@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 const {execSync} = require("child_process")
 const {existsSync, writeFileSync, mkdirSync} = require("fs")
 
@@ -171,7 +173,7 @@ function CreateTypescript(entry){
     writeFileSync("./package.json", TypescriptPackageJson.trim()
     .replaceAll("{entry}", entry)
     .replaceAll("{EntryPath}", EntryPath))
-    
+
 
     execSync("npm install npx typescript @types/node ts-node nodemon lodash") 
 

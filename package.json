@@ -1,0 +1,9 @@
+{
+  "name": "@powerkuu/gitnode",
+  "version": "1.0.0",
+  "description": "Create typescript project with one command + git repo",
+  "main": "bin/gitnode.js",
+  "bin": "bin/gitnode.js",
+  "author": "",
+  "license": "ISC"
+}
