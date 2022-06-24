@@ -174,6 +174,8 @@ function CreateTypescript(entry){
     .replaceAll("{entry}", entry)
     .replaceAll("{EntryPath}", EntryPath))
 
+    writeFileSync("./dev.sh", `#!/bin/bash\nnpm run dev`)
+    writeFileSync("./dev.bat", `@echo off\nnpm run dev`)
 
     execSync("npm install typescript @types/node ts-node nodemon lodash") 
 
