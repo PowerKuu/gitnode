@@ -3,7 +3,7 @@
 const {execSync} = require("child_process")
 const {existsSync, writeFileSync, mkdirSync} = require("fs")
 
-const TypescriptPackageJson = `
+const PackageJson = `
 {
     "name":"{entry}",
     "version":"1.0.0",
@@ -17,8 +17,21 @@ const TypescriptPackageJson = `
 }
 `
 
+const TsConfig = `
+{
+    "compilerOptions": {
+        "target": "ESnext", 
+        "lib": ["dom"], 
+        "moduleResolution": "node",
+        "noImplicitAny": false,
+    }
+}
+`
+
 const GitIngnore = `
+# Custom
 gitnode.js
+package-lock.json
 
 # Logs
 logs
@@ -170,7 +183,7 @@ function CreateTypescript(entry){
 
     mkdirSync(`./src`)
 
-    writeFileSync("./package.json", TypescriptPackageJson.trim()
+    writeFileSync("./package.json", PackageJson.trim()
     .replaceAll("{entry}", entry)
     .replaceAll("{EntryPath}", EntryPath))
 
@@ -180,7 +193,7 @@ function CreateTypescript(entry){
     execSync("npm install typescript @types/node ts-node nodemon lodash") 
 
     writeFileSync("./.gitignore", GitIngnore.trim())
-
+    writeFileSync("./tsconfig.json", TsConfig.trim())
     writeFileSync(EntryPath, "")
 
     execSync("git init")
@@ -189,5 +202,4 @@ function CreateTypescript(entry){
     console.log(`Created typescript project! Entry: (${EntryPath})`)
 }
 
-
-CreateTypescript("index")
+CreateTypescript(process.argv[2])
