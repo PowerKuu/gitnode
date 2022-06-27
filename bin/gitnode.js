@@ -207,4 +207,4 @@ function CreateTypescript(entry){
     console.log(`Created typescript project! Entry: (${EntryPath})!`)
 }
 
-CreateTypescript(process.argv[2])
+CreateTypescript(process.argv[2] || "index")
