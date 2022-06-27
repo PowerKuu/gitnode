@@ -182,8 +182,7 @@ function CreateTypescript(entry){
     console.log(`Creating typescript project...`)
 
     if (existsSync(EntryPath)) {
-        console.log(`Echo ${EntryPath} already exist! Updating package.json and tsconfig...`)
-        return
+        console.log(`${EntryPath} already exist! Updating package.json and tsconfig...`)
     } else {
         mkdirSync(`./src`)
         writeFileSync(EntryPath, "")
