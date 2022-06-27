@@ -174,14 +174,15 @@ dist
 function CreateTypescript(entry){
     const EntryPath = `./src/${entry}.ts`
 
-    console.log(`Creating typescript project!`)
+    console.log(`Creating typescript project...`)
 
     if (existsSync(EntryPath)) {
-        console.log(`Echo ${EntryPath} already exist!`)
+        console.log(`Echo ${EntryPath} already exist! Updating package.json and tsconfig...`)
         return
+    } else {
+        mkdirSync(`./src`)
+        writeFileSync(EntryPath, "")
     }
-
-    mkdirSync(`./src`)
 
     writeFileSync("./package.json", PackageJson.trim()
     .replaceAll("{entry}", entry)
@@ -194,12 +195,11 @@ function CreateTypescript(entry){
 
     writeFileSync("./.gitignore", GitIngnore.trim())
     writeFileSync("./tsconfig.json", TsConfig.trim())
-    writeFileSync(EntryPath, "")
 
     execSync("git init")
     execSync("code ./src/")
 
-    console.log(`Created typescript project! Entry: (${EntryPath})`)
+    console.log(`Created typescript project! Entry: (${EntryPath})!`)
 }
 
 CreateTypescript(process.argv[2])
