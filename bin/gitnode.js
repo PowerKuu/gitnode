@@ -32,6 +32,11 @@ const GitIngnore = `
 # Custom
 gitnode.js
 package-lock.json
+*.env
+*.env.development.local
+*.env.test.local
+*.env.production.local
+*.env.local
 
 # Logs
 logs
