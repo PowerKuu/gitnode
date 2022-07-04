@@ -1,6 +1,11 @@
-# gitnode
+# Gitnode
+
 Create typescript project with one command + git repo
 
-Run "npx @powerkuu/gitnode <name>" to create a project
 
+## Usage
+Run bellow to create a empty project. Fallback name is (index)!
+```
+npx @powerkuu/gitnode <-name-> 
+```
 Super simple!
