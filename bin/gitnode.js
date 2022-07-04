@@ -11,7 +11,7 @@ const PackageJson = `
     "main":"{entry}.ts",
     "dependencies":{},
     "devDependencies":{},
-    "scripts":{"dev": "nodemon --ext ts,js,json,env --watch src/*  --exec npm run start", "start": "npx ts-node {EntryPath}"},
+    "scripts":{"dev": "nodemon --ext ts,js,json,env --watch src/* --exec npm run start", "start": "npx ts-node {EntryPath}"},
     "author":"",
     "license":"ISC"
 }
@@ -24,6 +24,8 @@ const TsConfig = `
         "lib": ["dom"], 
         "moduleResolution": "node",
         "noImplicitAny": false,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
     }
 }
 `
@@ -195,7 +197,7 @@ function CreateTypescript(entry){
     writeFileSync("./dev.sh", `#!/bin/bash\nnpm run dev`)
     writeFileSync("./dev.bat", `@echo off\nnpm run dev`)
 
-    execSync("npm install typescript @types/node ts-node nodemon lodash") 
+    execSync("npm install typescript @types/node ts-node nodemon") 
 
     writeFileSync("./.gitignore", GitIngnore.trim())
     writeFileSync("./tsconfig.json", TsConfig.trim())
